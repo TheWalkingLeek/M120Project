@@ -6,20 +6,24 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace M120Projekt.Data
 {
-    public class KlasseA
+    public class Artikel
     {
         #region Datenbankschicht
         [Key]
-        public Int64 KlasseAId { get; set; }
+        public Int64 ArtikelID { get; set; }
         [Required]
-        public String TextAttribut { get; set; }
+        public String Bezeichnung { get; set; }
         [Required]
-        public DateTime DatumAttribut { get; set; }
+        public Int32 Anzahl { get; set; }
         [Required]
-        public Boolean BooleanAttribut { get; set; }
+        public String Kategorie { get; set; }
+        [Required]
+        public DateTime KaufenBis { get; set; }
+        [Required]
+        public Boolean Eingekauft { get; set; }
         #endregion
         #region Applikationsschicht
-        public KlasseA() { }
+        public Artikel() { }
         [NotMapped]
         public String BerechnetesAttribut
         {
@@ -28,43 +32,43 @@ namespace M120Projekt.Data
                 return "Im Getter kann Code eingefügt werden für berechnete Attribute";
             }
         }
-        public static List<KlasseA> LesenAlle()
+        public static List<Artikel> LesenAlle()
         {
             using (var db = new Context())
             {
-                return (from record in db.KlasseA select record).ToList();
+                return (from record in db.Artikel select record).ToList();
             }
         }
-        public static KlasseA LesenID(Int64 klasseAId)
+        public static Artikel LesenID(Int64 klasseAId)
         {
             using (var db = new Context())
             {
-                return (from record in db.KlasseA where record.KlasseAId == klasseAId select record).FirstOrDefault();
+                return (from record in db.Artikel where record.ArtikelID == klasseAId select record).FirstOrDefault();
             }
         }
-        public static List<KlasseA> LesenAttributGleich(String suchbegriff)
+        public static List<Artikel> LesenAttributGleich(String suchbegriff)
         {
             using (var db = new Context())
             {
-                return (from record in db.KlasseA where record.TextAttribut == suchbegriff select record).ToList();
+                return (from record in db.Artikel where record.Bezeichnung == suchbegriff select record).ToList();
             }
         }
-        public static List<KlasseA> LesenAttributWie(String suchbegriff)
+        public static List<Artikel> LesenAttributWie(String suchbegriff)
         {
             using (var db = new Context())
             {
-                return (from record in db.KlasseA where record.TextAttribut.Contains(suchbegriff) select record).ToList();
+                return (from record in db.Artikel where record.Bezeichnung.Contains(suchbegriff) select record).ToList();
             }
         }
         public Int64 Erstellen()
         {
-            if (this.TextAttribut == null || this.TextAttribut == "") this.TextAttribut = "leer";
-            if (this.DatumAttribut == null) this.DatumAttribut = DateTime.MinValue;
+            if (this.Bezeichnung == null || this.Bezeichnung == "") this.Bezeichnung = "leer";
+            if (this.KaufenBis == null) this.KaufenBis = DateTime.MinValue;
             using (var db = new Context())
             {
-                db.KlasseA.Add(this);
+                db.Artikel.Add(this);
                 db.SaveChanges();
-                return this.KlasseAId;
+                return this.ArtikelID;
             }
         }
         public Int64 Aktualisieren()
@@ -73,7 +77,7 @@ namespace M120Projekt.Data
             {
                 db.Entry(this).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return this.KlasseAId;
+                return this.ArtikelID;
             }
         }
         public void Loeschen()
@@ -86,7 +90,7 @@ namespace M120Projekt.Data
         }
         public override string ToString()
         {
-            return KlasseAId.ToString(); // Für bessere Coded UI Test Erkennung
+            return ArtikelID.ToString(); // Für bessere Coded UI Test Erkennung
         }
         #endregion
     }

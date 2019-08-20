@@ -5,49 +5,52 @@ namespace M120Projekt
 {
     static class APIDemo
     {
-        #region KlasseA
+        #region Artikel
         // Create
-        public static void DemoACreate()
+        public static void ArtikelCreate()
         {
             Debug.Print("--- DemoACreate ---");
-            // KlasseA
-            Data.KlasseA klasseA1 = new Data.KlasseA();
-            klasseA1.TextAttribut = "Artikel 1";
-            klasseA1.DatumAttribut = DateTime.Today;
-            Int64 klasseA1Id = klasseA1.Erstellen();
-            Debug.Print("Artikel erstellt mit Id:" + klasseA1Id);
+            // Artikel
+            Data.Artikel ArtikelA1 = new Data.Artikel();
+            ArtikelA1.Bezeichnung = "Brot";
+            ArtikelA1.Kategorie = "Lebensmittel";
+            ArtikelA1.Anzahl = 1;
+            ArtikelA1.KaufenBis = DateTime.Today;
+            ArtikelA1.Eingekauft = false;
+            Int64 ArtikelA1Id = ArtikelA1.Erstellen();
+            Debug.Print("Artikel erstellt mit Id:" + ArtikelA1Id);
         }
-        public static void DemoACreateKurz()
+        public static void ArtikelCreateKurz()
         {
-            Data.KlasseA klasseA2 = new Data.KlasseA { TextAttribut = "Artikel 2", BooleanAttribut = true, DatumAttribut = DateTime.Today };
-            Int64 klasseA2Id = klasseA2.Erstellen();
-            Debug.Print("Artikel erstellt mit Id:" + klasseA2Id);
+            Data.Artikel ArtikelA2 = new Data.Artikel { Bezeichnung = "Drucker", Kategorie = "Elektronik", Anzahl = 1, Eingekauft = true, KaufenBis = DateTime.Today };
+            Int64 ArtikelA2Id = ArtikelA2.Erstellen();
+            Debug.Print("Artikel erstellt mit Id:" + ArtikelA2Id);
         }
 
         // Read
-        public static void DemoARead()
+        public static void ArtikelRead()
         {
             Debug.Print("--- DemoARead ---");
             // Demo liest alle
-            foreach (Data.KlasseA klasseA in Data.KlasseA.LesenAlle())
+            foreach (Data.Artikel klasseA in Data.Artikel.LesenAlle())
             {
-                Debug.Print("Artikel Id:" + klasseA.KlasseAId + " Name:" + klasseA.TextAttribut);
+                Debug.Print("Artikel Id:" + klasseA.ArtikelID + " Name:" + klasseA.Bezeichnung);
             }
         }
         // Update
-        public static void DemoAUpdate()
+        public static void ArtikelUpdate()
         {
             Debug.Print("--- DemoAUpdate ---");
             // KlasseA ändert Attribute
-            Data.KlasseA klasseA1 = Data.KlasseA.LesenID(1);
-            klasseA1.TextAttribut = "Artikel 1 nach Update";
+            Data.Artikel klasseA1 = Data.Artikel.LesenID(1);
+            klasseA1.Bezeichnung = "Artikel 1 nach Update";
             klasseA1.Aktualisieren();
         }
         // Delete
-        public static void DemoADelete()
+        public static void ArtikelDelete()
         {
             Debug.Print("--- DemoADelete ---");
-            Data.KlasseA.LesenID(2).Loeschen();
+            Data.Artikel.LesenID(2).Loeschen();
             Debug.Print("Artikel mit Id 2 gelöscht");
         }
         #endregion
