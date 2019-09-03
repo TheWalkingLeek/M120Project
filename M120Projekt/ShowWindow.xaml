@@ -1,0 +1,74 @@
+﻿<Window x:Class="M120Projekt.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:M120Projekt"
+        mc:Ignorable="d"
+        Title="EditWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Margin="10 0" HorizontalAlignment="Left">
+            <Label Content="Artikel" FontWeight="Bold" Grid.Row="0"/>
+        </Viewbox>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Bezeichnung:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="0"/>
+            <TextBox x:Name="titleTextBox" Grid.Column="1" VerticalAlignment="Stretch" Margin="10" Grid.Row="0"/>
+            <Label Content="Anzahl:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="1"/>
+            <TextBox x:Name="amountTextBox" Grid.Column="1" VerticalAlignment="Center" Margin="10" Grid.Row="1"/>
+            <Label Content="Einzukaufen bis:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="2"/>
+            <DatePicker x:Name="buyUntilPicker" Grid.Column="1" VerticalAlignment="Center" Margin="10" Grid.Row="2"/>
+            <Label Content="Kategorie:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="3"/>
+            <ComboBox x:Name="categoryComboBox" Grid.Column="1" VerticalAlignment="Center" Margin="10" Grid.Row="3">
+                <ListBoxItem Content="Lebensmittel"/>
+                <ListBoxItem Content="Elektronik"/>
+            </ComboBox>
+            <Button x:Name="deleteButton" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Grid.Row="1">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image VerticalAlignment="Center" Source="res/delete.png" Height="27" Width="31"/>
+                        <TextBlock VerticalAlignment="Center">Löschen</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="editButton" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Grid.Row="2">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image VerticalAlignment="Center" Source="res/edit.png" Height="27" Width="31"/>
+                        <TextBlock VerticalAlignment="Center">Bearbeiten</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="submitButton" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Grid.Row="3">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image VerticalAlignment="Center" Source="pack://application:,,,/save.png" Height="27" Width="31"/>
+                        <TextBlock VerticalAlignment="Center">Übernehmen</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Grid.Row="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image VerticalAlignment="Center" Source="pack://application:,,,/res/cancel.png" Height="20" Width="22" />
+                    <TextBlock VerticalAlignment="Center">Abbrechen</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
