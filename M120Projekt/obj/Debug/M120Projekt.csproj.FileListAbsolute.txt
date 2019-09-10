@@ -78,5 +78,5 @@ C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\M120Projekt.csproj.CoreCo
 C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\M120Projekt.csproj.CopyComplete
 C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\M120Projekt.exe
 C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\M120Projekt.pdb
-C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\EditWindow.g.cs
-C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\EditWindow.baml
+C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\ShowWindow.g.cs
+C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\ShowWindow.baml
