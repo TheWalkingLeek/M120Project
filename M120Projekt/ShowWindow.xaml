@@ -32,15 +32,15 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Label Content="Bezeichnung:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="0"/>
-            <TextBox x:Name="titleTextBox" Grid.Column="1" VerticalAlignment="Stretch" Margin="10" Grid.Row="0" TextChanged="TitleTextBox_TextChanged"/>
+            <TextBox x:Name="titleTextBox" Grid.Column="1" VerticalAlignment="Stretch" Margin="10" Grid.Row="0" TextChanged="TitleTextBox_TextChanged" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
             <Label Content="Anzahl:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="1"/>
             <TextBox x:Name="amountTextBox" Grid.Column="1" VerticalAlignment="Center" Margin="10" Grid.Row="1" TextChanged="AmountTextBox_TextChanged"/>
             <Label Content="Einzukaufen bis:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="2"/>
             <DatePicker x:Name="buyUntilPicker" Grid.Column="1" VerticalAlignment="Center" Margin="10" Grid.Row="2" SelectedDateChanged="BuyUntilPicker_SelectedDateChanged"/>
             <Label Content="Kategorie:" Grid.Column="0" VerticalAlignment="Center" Margin="10" Grid.Row="3"/>
             <ComboBox x:Name="categoryComboBox" Grid.Column="1" VerticalAlignment="Center" Margin="10" Grid.Row="3" SelectionChanged="CategoryComboBox_SelectionChanged">
-                <ListBoxItem Content="Lebensmittel"/>
-                <ListBoxItem Content="Elektronik"/>
+                <ComboBoxItem Content="Lebensmittel"/>
+                <ComboBoxItem Content="Elektronik"/>
             </ComboBox>
             <Button x:Name="deleteButton" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Grid.Row="4" Click="DeleteButton_Click">
                 <Button.Content>

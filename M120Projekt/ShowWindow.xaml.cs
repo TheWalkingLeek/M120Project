@@ -26,12 +26,15 @@ namespace M120Projekt
         private bool articleChanged = false;
 
         private bool articleInvalid = false;
-        public EditWindow()
+
+        private Data.Artikel article;
+        private long articleId = 2;
+        public EditWindow(long articleId)
         {
             InitializeComponent();
 
+            this.articleId = articleId;
             this.resetArticle();
-            this.categoryComboBox.SelectedItem = this.categoryComboBox.Items.GetItemAt(0);
 
             this.changeMode(modes.Show);
         }
@@ -50,10 +53,20 @@ namespace M120Projekt
         }
         private void resetArticle()
         {
-            this.titleTextBox.Text = "Brot";
-            this.amountTextBox.Text = "1";
-            this.buyUntilPicker.SelectedDate = DateTime.Today;
-            this.categoryComboBox.SelectedItem = this.categoryComboBox.Items.GetItemAt(0);
+            this.article = Data.Artikel.LesenID(this.articleId);
+            this.titleTextBox.Text = this.article.Bezeichnung;
+            this.amountTextBox.Text = this.article.Anzahl + "";
+            this.buyUntilPicker.SelectedDate = this.article.KaufenBis;
+            int index = 0;
+            for (int i = 0; i < this.categoryComboBox.Items.Count; i++)
+            {
+                ComboBoxItem item = (ComboBoxItem)this.categoryComboBox.Items.GetItemAt(i);
+                if (item.Content.Equals(this.article.Kategorie))
+                {
+                    index = i;
+                }
+            }
+            this.categoryComboBox.SelectedItem = this.categoryComboBox.Items.GetItemAt(index);
         }
 
         private void initShow()
@@ -94,6 +107,11 @@ namespace M120Projekt
         {
             if (!this.articleInvalid)
             {
+                this.article.Bezeichnung = this.titleTextBox.Text;
+                this.article.Anzahl = int.Parse(this.amountTextBox.Text);
+                this.article.KaufenBis = (DateTime) this.buyUntilPicker.SelectedDate;
+                this.article.Kategorie = (String) ((ComboBoxItem)this.categoryComboBox.SelectedItem).Content;
+                this.article.Aktualisieren();
                 this.changeMode(modes.Show);
             }
         }
@@ -103,7 +121,8 @@ namespace M120Projekt
             var result = MessageBox.Show("Artikel unwiderruflich löschen", "Artikel löschen?", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
-
+                this.article.Loeschen();
+                App.Current.Shutdown();
             }
         }
 
