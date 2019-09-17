@@ -146,7 +146,7 @@ namespace M120Projekt
         private void TitleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.articleChanged = true;
-            if (this.titleTextBox.Text == "" || this.titleTextBox.Text.Length > 20) {
+            if (this.titleTextBox.Text == "" || this.titleTextBox.Text.Length > 30) {
                 this.titleErrorLabel.Content = this.titleTextBox.Text == "" ? "Die Bezeichnung darf nicht leer sein" : "Die Bezeichnung muss weniger als 30 Zeichen enhalten";
                 this.titleErrorLabel.Visibility = Visibility.Visible;
                 this.articleInvalid = true;
@@ -164,6 +164,13 @@ namespace M120Projekt
             int x;
             if (this.amountTextBox.Text == "" || !(int.TryParse(this.amountTextBox.Text, out x) && x > 0)) {
                 this.amountErrorLabel.Content = this.amountTextBox.Text == "" ? "Die Anzahl darf nicht leer sein" : "Die Anzahl muss eine positive ganze Zahl sein";
+                if (!(int.TryParse(this.amountTextBox.Text, out x) && x < 999999999) && this.amountTextBox.Text != "")
+                {
+                    this.amountErrorLabel.Content = "Die Zahl muss kleiner als 999999999";
+                    this.amountErrorLabel.Visibility = Visibility.Visible;
+                    this.articleInvalid = true;
+
+                }
                 this.amountErrorLabel.Visibility = Visibility.Visible;
                 this.articleInvalid = true;
             } else
