@@ -22,21 +22,18 @@ namespace M120Projekt
         public OverviewWindow()
         {
             InitializeComponent();
-
-            this.articleList.ItemsSource = Data.Artikel.LesenAlle();
+            this.placeholder.Content = new ArticleUC();
         }
 
         private void NewArticleButton_Click(object sender, RoutedEventArgs e)
         {
-            new MainWindow(this).Show();
+            this.placeholder.Content = new MainWindow(this);
+            this.newArticleButton.IsEnabled = false;
         }
 
-        private void ArticleList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        internal void updateSource()
         {
-            if (articleList.SelectedItem != null)
-            {
-                new EditWindow(((Data.Artikel) articleList.SelectedItem).ArtikelID).Show();
-            }
+            ((ArticleUC)this.placeholder.Content).articleList.ItemsSource = Data.Artikel.LesenAlle();
         }
     }
 }

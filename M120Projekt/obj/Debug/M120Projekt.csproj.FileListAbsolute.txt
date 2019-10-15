@@ -82,3 +82,5 @@ C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\ShowWindow.g.cs
 C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\ShowWindow.baml
 C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\OverviewWindow.g.cs
 C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\OverviewWindow.baml
+C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\ArticleUC.g.cs
+C:\Users\vmadmin\git\M120Projekt\M120Projekt\obj\Debug\ArticleUC.baml

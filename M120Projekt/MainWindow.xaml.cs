@@ -7,7 +7,7 @@ namespace M120Projekt
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : UserControl
     {
         private bool articleInvalid = true;
         private OverviewWindow overviewWindow;
@@ -47,15 +47,15 @@ namespace M120Projekt
 
             if (result == MessageBoxResult.OK)
             {
-                EditWindow editWindow = new EditWindow(id);
-                editWindow.Show();
-                overviewWindow.articleList.ItemsSource = Data.Artikel.LesenAlle();
+                this.overviewWindow.placeholder.Content = new ArticleUC();
+                this.overviewWindow.newArticleButton.IsEnabled = true;
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            App.Current.Shutdown();
+            this.overviewWindow.placeholder.Content = new ArticleUC();
+            this.overviewWindow.newArticleButton.IsEnabled = true;
         }
 
         private void TitleTextBox_TextChanged(object sender, TextChangedEventArgs e)

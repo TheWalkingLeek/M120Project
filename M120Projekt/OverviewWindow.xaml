@@ -15,15 +15,6 @@
             <Label Content="Einkaufsliste" FontSize="32"/>
             <Button x:Name="newArticleButton" Content="Neuer Artikel" Width="100" Margin="10" HorizontalAlignment="Right" Click="NewArticleButton_Click"/>
         </StackPanel>
-        <DataGrid x:Name="articleList" AutoGenerateColumns="False" Grid.Row="1" MouseDoubleClick="ArticleList_MouseDoubleClick">
-            <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Bezeichnung}" Header="Bezeichnung"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Anzahl}" Header="Anzahl"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Kategorie}" Header="Kategorie"/>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding KaufenBis, StringFormat='dd.MM.yyyy'}" Header="KaufenBis"/>
-                <DataGridCheckBoxColumn Binding="{Binding Eingekauft}" Header="Eingekauft"/>
-            </DataGrid.Columns>
-            
-        </DataGrid> 
+        <ScrollViewer x:Name="placeholder" Grid.Row="1"/>
     </Grid>
 </Window>
