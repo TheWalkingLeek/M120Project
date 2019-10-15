@@ -10,8 +10,9 @@ namespace M120Projekt
     public partial class MainWindow : Window
     {
         private bool articleInvalid = true;
+        private OverviewWindow overviewWindow;
 
-        public MainWindow()
+        public MainWindow(OverviewWindow overviewWindow)
         {
             InitializeComponent();
             // Aufruf diverse APIDemo Methoden
@@ -24,6 +25,7 @@ namespace M120Projekt
             this.categoryComboBox.SelectedItem = this.categoryComboBox.Items.GetItemAt(0);
             this.buyUntilPicker.SelectedDate = DateTime.Now;
             this.submitButton.IsEnabled = !this.articleInvalid;
+            this.overviewWindow = overviewWindow;
         }
 
         private void SubmitButton_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -47,6 +49,7 @@ namespace M120Projekt
             {
                 EditWindow editWindow = new EditWindow(id);
                 editWindow.Show();
+                overviewWindow.articleList.ItemsSource = Data.Artikel.LesenAlle();
             }
         }
 
@@ -68,7 +71,8 @@ namespace M120Projekt
         private void validateArticle()
         {
             this.articleInvalid = false;
-            if (this.titleTextBox.Text == "" || this.titleTextBox.Text.Length > 30)
+            String length = this.titleTextBox.Text.Replace("\r", "").Replace("\n", "");
+            if (this.titleTextBox.Text == "" || length.Length > 30)
             {
                 this.titleErrorLabel.Content = this.titleTextBox.Text == "" ? "Die Bezeichnung darf nicht leer sein" : "Die Bezeichnung muss weniger als 30 Zeichen enhalten";
                 this.titleErrorLabel.Visibility = Visibility.Visible;
